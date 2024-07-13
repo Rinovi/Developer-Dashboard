@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models/index");
+const { User } = require("../../models/index");
 
 router.get("/", (req, res) => {
     res.render("homepage", {
