@@ -30,10 +30,10 @@ const sess = {
 
 
 app.use(session(sess));
-// route example here
-// const apparelRoutes = require('./controllers/api/apparel');
-// app.use('/apparel', apparelRoutes);
 
+
+const loginRoutes = require("./controllers/api/user-routes");
+app.use('/login', loginRoutes);
 
 
 // Parse incoming request bodies with JSON payloads
