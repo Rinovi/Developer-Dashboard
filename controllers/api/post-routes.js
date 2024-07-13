@@ -34,16 +34,16 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log(req.body) 
+  console.log(req.body)
   if (req.session.loggedIn)
-  try {
-    req.body.user_id=req.session.user_id
-    const postData = await Post.create(req.body);
-    res.status(200).json(postData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+    try {
+      req.body.user_id = req.session.user_id
+      const postData = await Post.create(req.body);
+      res.status(200).json(postData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
   // create a new Post
 });
 
@@ -54,36 +54,36 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       },
     });
-  if (!postData [0]) {
-    res.status(400).json({message: "Category is not found."});
-    return;
+    if (!postData[0]) {
+      res.status(400).json({ message: "Category is not found." });
+      return;
+    }
+    res.status(200).json(postData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
   }
-  res.status(200).json(postData);
-} catch (error) {
-  console.log (error);
-  res.status(500).json(error);
-}
   // update a Post by its `id` value
 });
 
 router.delete('/:id', async (req, res) => {
   try {
-    const postData = await Post.destroy( {
+    const postData = await Post.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id
       },
     });
     console.log(postData);
-  if (!postData) {
-    res.status(400).json({message: "Category is not found."});
-    return;
-  }
+    if (!postData) {
+      res.status(400).json({ message: "Category is not found." });
+      return;
+    }
 
-      res.status(200).json({ message: "Post deleted successfully." });
+    res.status(200).json({ message: "Post deleted successfully." });
   } catch (error) {
-      console.error('Error deleting Post:', error);
-      res.status(500).json(error);
+    console.error('Error deleting Post:', error);
+    res.status(500).json(error);
   }
 });
 module.exports = router;

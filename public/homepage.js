@@ -7,26 +7,26 @@ const womensFlyout = document.getElementById('womensFlyout');
 womensFlyout.classList.add('hidden');
 // Show men's flyout
 mensButton.addEventListener('click', () => {
-    mensFlyout.classList.remove('hidden');
-    womensFlyout.classList.add('hidden');
-    mensFlyout.classList.add('active');
-    womensFlyout.classList.remove('active');
+  mensFlyout.classList.remove('hidden');
+  womensFlyout.classList.add('hidden');
+  mensFlyout.classList.add('active');
+  womensFlyout.classList.remove('active');
 });
 // Show women's flyout
 womensButton.addEventListener('click', () => {
-    womensFlyout.classList.remove('hidden');
-    mensFlyout.classList.add('hidden');
-    womensFlyout.classList.add('active');
-    mensFlyout.classList.remove('active');
+  womensFlyout.classList.remove('hidden');
+  mensFlyout.classList.add('hidden');
+  womensFlyout.classList.add('active');
+  mensFlyout.classList.remove('active');
 });
 
 function scrollToArticle() {
-    const targetArticle = document.querySelector('.targetArticle');
-    const scrollBtn = document.querySelector('.scrollBtn');
-  
-    scrollBtn.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default anchor behavior
-  
-      targetArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
+  const targetArticle = document.querySelector('.targetArticle');
+  const scrollBtn = document.querySelector('.scrollBtn');
+
+  scrollBtn.addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    targetArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}

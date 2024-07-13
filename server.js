@@ -14,18 +14,18 @@ const PORT = process.env.PORT || 3001;
 
 
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-      httpOnly: true,
-      secure: false,
-      //sameSite: 'strict',
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    }),
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+    secure: false,
+    //sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
 
 
@@ -52,5 +52,5 @@ app.use(routes);
 app.use(express.static('public'));
 
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening on port ' + PORT));
+  app.listen(PORT, () => console.log('Now listening on port ' + PORT));
 });

@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
 
-  form.addEventListener('submit', async function(event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!response.ok) {
         console.log('Account not created successfully');
         return null;
-      } 
+      }
 
       // Account created successfully
       console.log('Account created successfully');
