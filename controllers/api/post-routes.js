@@ -33,11 +33,12 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
   console.log(req.body)
   if (req.session.loggedIn)
     try {
-      req.body.user_id = req.session.user_id
+      req.body.postAuthor = req.session.user_id
+      console.log(req.body);
       const postData = await Post.create(req.body);
       res.status(200).json(postData);
     } catch (err) {

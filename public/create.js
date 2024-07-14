@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
       email: formData.get('email'),
       password: formData.get('password')
     };
-
+alert(formData.get("email"))
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('/api/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Display a message to the user
       alert('Account created successfully! You will now be redirected to the homepage.');
       // Redirect to the homepage
-      window.location.href = '/';
+      window.location.href = '/profile';
 
     } catch (error) {
       console.error('Error creating account:', error);
