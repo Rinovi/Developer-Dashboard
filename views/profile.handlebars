@@ -1,5 +1,5 @@
-<!--Dashboard Flyout-->
-<main id="womensFlyout" class="my-8 flyout-menu">
+<!--Profile Page-->
+<main class="my-8">
   <div class="bg-white">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0">
@@ -58,11 +58,11 @@
     </div>
   </div>
   <div class="targetArticle flex justify-left px-20 grid grid-cols-1 md:grid-cols-3 gap-4">
-    {{!-- {{#each posts as |post| }} --}}
+    {{#each posts as |post| }}
     <article class="max-w-xl py-10">
       <div class="flex items-center gap-x-4 text-xs">
         <time datetime="2020-03-16" class="text-gray-500">
-            {{!-- {{post.postDate}} --}}
+            {{post.postDate}}
             </time>
         <a href="#"
           class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Edit</a>
@@ -77,11 +77,11 @@
         <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
           <a href="#">
             <span class="absolute inset-0"></span>
-           {{!-- {{post.postTitle}} --}}
+           {{post.postTitle}}
           </a>
         </h3>
         <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-            {{!-- {{post.description}} --}}
+            {{post.description}}
             </p>
       </div>
       <div class="relative mt-8 flex items-center gap-x-4">
@@ -90,13 +90,13 @@
           <p class="font-semibold text-gray-900">
             <a href="#">
               <span class="absolute inset-0"></span>
-              {{!-- Michael Foster --}}
+              {{post.postAuthor}}
             </a>
           </p>
         </div>
       </div>
     </article>
-    {{!-- {{/each}} --}}
+    {{/each}}
   </div>
 </main>
 <script src="posts.js"></script>
