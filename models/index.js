@@ -1,15 +1,14 @@
 const User = require("./user")
 const Post = require("./post")
+const Comment = require("./comment")
 
-User.hasMany(Post, {
-    foreignKey: "user_id",
-    onDelete: "cascade"
-})
 Post.belongsTo(User, {
-    foreignKey: "user_id"
+    foreignKey: "postAuthor"
 })
+// post have many comments, comment belong to
 
 module.exports = {
     User,
-    Post
+    Post,
+    Comment
 }

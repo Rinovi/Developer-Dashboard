@@ -1,34 +1,41 @@
 const router = require("express").Router();
 const { User, Post } = require("../../models/index");
 
-router.get("/", (req, res) => {
-    res.render("homepage", {
-        layout: "main",
-        logged_in: req.session.loggedIn
+router.get("/", async (req, res) => {
+    const postData = await Post.findAll({
+       
+        include: User
     })
+        const posts = postData.map(post => post.get({plain: true}))
+        console.log(posts)
+        res.render("homepage", {
+            logged_in: req.session.loggedIn,
+            posts
+        })
 })
 
 router.get("/profile", async (req, res) => {
     console.log(req.session.user_id)
 if (req.session.loggedIn) {
-    // const postData = await Post.findAll({
-    //     where: {
-    //         postAuthor: req.session.user_id
-    //     }
-    // })
-    // if (postData) {
-    //     const posts = postData.map(post => post.get({plain: true}))
-    //     console.log(posts)
-    //     res.render("profile", {
-    //         logged_in: req.session.loggedIn,
-    //         posts
-    //     })
-    // } else {
+    const postData = await Post.findAll({
+        where: {
+            postAuthor: req.session.user_id
+        },
+        include: User
+    })
+    if (postData) {
+        const posts = postData.map(post => post.get({plain: true}))
+        console.log(posts)
+        res.render("profile", {
+            logged_in: req.session.loggedIn,
+            posts
+        })
+    } else {
         res.render("profile", {
             logged_in: req.session.loggedIn,
             posts: []
         })
-    // }
+    }
    
   
 } else {
@@ -52,6 +59,35 @@ router.get("/signup", (req, res) => {
     } else {
         res.render("signup", {
             layout: "account",
+        })
+    }
+})
+
+router.get("/post-view/:id", async (req, res) => {
+    try {
+        const postData = await Post.findByPk( req.params.id, {
+            include: User
+        })
+    
+        if(!postData) {
+            console.log("No post with that id!")
+            res.render('homepage', {
+                logged_in: req.session.loggedIn
+            })
+        } else {
+            const post = postData.get({plain: true})
+            console.log(post)
+            res.render("comment", {
+                logged_in: req.session.loggedIn,
+                post
+            })
+        }
+    
+    } catch(err) {
+        console.log(err);
+
+        res.render('homepage', {
+            logged_in: req.session.loggedIn
         })
     }
 })

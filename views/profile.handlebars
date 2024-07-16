@@ -8,14 +8,6 @@
       </div>
       <form id="form">
         <div class="border-b border-gray-900/10 ">
-          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div class="sm:col-span-3">
-              <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Post Author</label>
-              <div class="mt-2">
-                <input type="text" name="postAuthor" id="postAuthor" autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              </div>
-            </div>
             <div class="sm:col-span-3">
               <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Post Title</label>
               <div class="mt-2">
@@ -66,8 +58,8 @@
             </time>
         <a href="#"
           class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Edit</a>
-        <a href="#"
-          class="relative z-10 rounded-full bg-red-100 px-3 py-1.5 font-medium text-gray-600 hover:bg-red-200">delete</a>
+        <a href="#" id="{{post.id}}"
+          class="delete relative z-10 rounded-full bg-red-100 px-3 py-1.5 font-medium text-gray-600 hover:bg-red-200">delete</a>
       </div>
       <div class="flex items-center gap-x-4 text-xs">
 
@@ -90,7 +82,7 @@
           <p class="font-semibold text-gray-900">
             <a href="#">
               <span class="absolute inset-0"></span>
-              {{post.postAuthor}}
+              {{post.user.email}}
             </a>
           </p>
         </div>
