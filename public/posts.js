@@ -51,3 +51,5 @@ deleteBtn.on('click', function (e){
     });
  });
 
+ // add event for edit posts
+

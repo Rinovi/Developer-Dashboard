@@ -64,32 +64,33 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/post-view/:id", async (req, res) => {
-    try {
+    console.log(req.params.id);
+    // try {
         const postData = await Post.findByPk( req.params.id, {
-            include: User
+            include: [{model: User}]
         })
     
-        if(!postData) {
-            console.log("No post with that id!")
-            res.render('homepage', {
-                logged_in: req.session.loggedIn
-            })
-        } else {
+        // if(!postData) {
+        //     console.log("No post with that id!")
+        //     res.render('homepage', {
+        //         logged_in: req.session.loggedIn
+        //     })
+        // } else {
             const post = postData.get({plain: true})
             console.log(post)
             res.render("comment", {
                 logged_in: req.session.loggedIn,
                 post
             })
-        }
+        // }
     
-    } catch(err) {
-        console.log(err);
+    // } catch(err) {
+    //     console.log(err);
 
-        res.render('homepage', {
-            logged_in: req.session.loggedIn
-        })
-    }
+    //     res.render('homepage', {
+    //         logged_in: req.session.loggedIn
+    //     })
+    // }
 })
 
 module.exports = router;

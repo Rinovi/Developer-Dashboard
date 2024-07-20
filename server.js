@@ -32,6 +32,8 @@ const sess = {
 app.use(session(sess));
 
 
+app.use(express.static('public'));
+app.use(routes);
 const loginRoutes = require("./controllers/api/user-routes");
 app.use('/login', loginRoutes);
 
@@ -48,8 +50,7 @@ app.set('view engine', 'handlebars');
 
 
 
-app.use(routes);
-app.use(express.static('public'));
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port ' + PORT));
