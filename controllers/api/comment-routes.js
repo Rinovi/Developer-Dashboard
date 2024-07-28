@@ -35,10 +35,9 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new comment under a post
-router.post('/:postId/new', async (req, res) => {
+router.post('/:postId/comments/new', async (req, res) => {
   try {
     const { postId } = req.params;
-    req.body.postAuthor = req.session.user_id 
     req.body.postId = postId; // Associate the comment with the post
     const commentData = await Comment.create(req.body);
     res.status(200).json(commentData);

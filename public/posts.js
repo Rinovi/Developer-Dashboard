@@ -5,7 +5,7 @@ form.addEventListener('submit', function (e){
    e.preventDefault();
    var postTitle = document.getElementById('postTitle').value;
 var description = document.getElementById('postContent').value;
-   alert(postTitle);
+   alert('Post Completed');
    
    fetch("/post/new", {
     method: 'POST',
@@ -50,6 +50,4 @@ deleteBtn.on('click', function (e){
         console.error('Error:', error);
     });
  });
-
- // add event for edit posts
 
