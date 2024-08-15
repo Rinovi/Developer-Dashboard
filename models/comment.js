@@ -12,8 +12,8 @@ Comment.init(
       autoIncrement: true,
     },
     postAuthor: {
-      type: DataTypes.STRING,
-      // interger?
+      type: DataTypes.INTEGER,
+    
       allowNull: false,
       references: {
         model: "user",
@@ -26,7 +26,7 @@ Comment.init(
         references: {
           model: "post",
           key: "id"
-        } // don't need
+        } 
       },
     content: {
       type: DataTypes.STRING,
@@ -36,7 +36,7 @@ Comment.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    }, // don't need
+    }, 
   },
   {
     sequelize,

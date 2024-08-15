@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
       email: formData.get('email'),
       password: formData.get('password')
     };
-alert(formData.get("email"))
     try {
       const response = await fetch('/api/create', {
         method: 'POST',
