@@ -8,8 +8,8 @@ a CMS-style blog site where developers can publish and view posts. The applicati
 
 If you'd like to run the application locally, you'll first need to go through a few steps.  
 * Run `npm install`
-* Connect to postgres and run `\i db/schema.sql;`
 * Add `DB_NAME`, `DB_USER`, and `DB_PASSWORD` variables to an env file so you can connect with the DB.
+* Connect to postgres and run `\i db/schema.sql;`
 * Lastly, open a new terminal and run `npm start`, then visit `localhost:3001` to view the application in your web browser.
 
 ## Usage
